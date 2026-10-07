@@ -9,7 +9,7 @@ from kafka import KafkaProducer
 fake = Faker()
 
 # Configuration
-KAFKA_BROKER = "localhost:9092"
+KAFKA_BROKER = "127.0.0.1:9092"
 TOPIC_NAME = "ecommerce_social_feed"
 
 # Realistic e-commerce brands and mock sentiments
@@ -42,6 +42,7 @@ def create_kafka_producer(broker_address: str) -> KafkaProducer:
         producer = KafkaProducer(
             bootstrap_servers=[broker_address],
             value_serializer=lambda v: json.dumps(v).encode("utf-8"),
+            api_version=(3, 6, 0),  # <--- ADD THIS LINE
             retries=5
         )
         print(f"Connected to Kafka broker at {broker_address}")
