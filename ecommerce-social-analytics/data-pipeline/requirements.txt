@@ -1,2 +1,4 @@
-kafka-python-ng>=2.2.2
-faker>=24.0.0
+confluent-kafka
+Faker
+pymongo
+vaderSentiment
